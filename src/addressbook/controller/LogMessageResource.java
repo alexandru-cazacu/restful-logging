@@ -34,7 +34,15 @@ public class LogMessageResource {
 
         String res = gson.toJson(logMessages);
 
-        return Response.ok(res).build();
+        return Response
+                .ok(res)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Credentials", "true")
+                .header("Access-Control-Allow-Headers",
+                        "origin, content-type, accept, authorization")
+                .header("Access-Control-Allow-Methods",
+                        "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+                .build();
     }
 
     @POST
@@ -44,7 +52,7 @@ public class LogMessageResource {
         Gson gson = new Gson();
         LogMessage logMessage = gson.fromJson(message, LogMessage.class);
         int rows = DatabaseManager.getInstance().addLogMessage(logMessage);
-        
+
         return Response.ok().build();
     }
 }
