@@ -19,11 +19,11 @@ Returns a JSON containin a list of logs. The list can be filtered using the foll
 
 #### API call
 
-localhost:8080/api/logmessages?appId={appId}&level={severity level}
+`localhost:8080/api/logmessages?appId={appId}&level={severity level}`
 
 #### Example
 
-localhost:8080/api/logmessages?appId=super-awesome-app&level=SEVERE
+`localhost:8080/api/logmessages?appId=super-awesome-app&level=SEVERE`
 
 #### Body
 
@@ -71,7 +71,7 @@ Sends a new Log to the server.
 
 #### API call
 
-localhost:8080/api/logmessages
+`localhost:8080/api/logmessages`
 
 #### Body
 
