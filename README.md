@@ -4,10 +4,11 @@ RESTful logger made with MySQL and a bunch of libraries. Database is not impleme
 
 ## Table of contents
 
-- [GET logs](#get-logs)
-- [POST new log](#post-new-log)
+- [GET Logs](#get-logs)
+- [GET Settings](#get-settings)
+- [POST New log](#post-new-log)
 
-## GET logs
+## GET Logs
 
 #### Description
 
@@ -37,7 +38,33 @@ localhost:8080/api/logmessages?appId=super-awesome-app&level=SEVERE
 ]
 ```
 
-## POST new log
+## GET Settings
+
+#### Description
+
+You can get settings of loggable levels and for the next request interval  in a JSON format.
+
+#### API call
+
+localhost:8080/api/logmessages/settings
+
+#### Example
+
+localhost:8080/api/logmessages/settings
+
+#### Body
+
+```json
+{
+  "loggableLevels": [
+      "SEVERE",
+      "WARNING"
+      ],
+  "newRequestIntervalInSeconds": 10
+}
+```
+
+## POST Lew log
 
 #### Description
 
