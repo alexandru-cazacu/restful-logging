@@ -3,24 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package addressbook.controller;
+package logging.controller;
 
-import addressbook.model.DatabaseManager;
-import addressbook.model.LogMessage;
+import logging.model.DatabaseManager;
+import logging.model.LogMessage;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import logging.model.Settings;
 
 /**
  *
  * @author Alexandru Cazacu
  */
-@Path("logmessages")
 public class LogMessageResource {
 
     @GET
+    @Path("settings")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getLogMessagesToLog() {
+        Settings settings = new Settings();
+        return null;
+    }
+    
+    
+    @GET
+    @Path("logmessages")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getLogMessages(
             @DefaultValue("NONE") @QueryParam("appId") String appId,
@@ -46,6 +56,7 @@ public class LogMessageResource {
     }
 
     @POST
+    @Path("logmessages")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addLogMessage(String message) {

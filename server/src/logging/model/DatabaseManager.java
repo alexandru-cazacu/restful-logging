@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package addressbook.model;
+package logging.model;
 
 import com.mysql.jdbc.Statement;
 import java.sql.Connection;
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import logging.client.LoggerSender;
 
 /**
  *
@@ -48,7 +49,8 @@ public class DatabaseManager implements LogMessageDB {
                 connection = DriverManager.getConnection("jdbc:mysql://localhost/logging", "root", "");
             }
             catch (SQLException ex) {
-                Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+                LoggerSender.getInstance().severe(ex.getMessage());
+                System.exit(1);
             }
         }
     }
@@ -83,7 +85,8 @@ public class DatabaseManager implements LogMessageDB {
             }
         }
         catch (SQLException ex) {
-            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+            LoggerSender.getInstance().severe(ex.getMessage());
+            System.exit(1);
         }
         return logMessages;
     }
@@ -105,7 +108,8 @@ public class DatabaseManager implements LogMessageDB {
             return rowCount;
         }
         catch (SQLException ex) {
-            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+            LoggerSender.getInstance().severe(ex.getMessage());
+            System.exit(1);
         }
         return 0;
     }

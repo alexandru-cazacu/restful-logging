@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import addressbook.model.LogMessage;
+import logging.model.LogMessage;
 import com.google.gson.Gson;
 import java.sql.Timestamp;
 import javax.ws.rs.client.Client;

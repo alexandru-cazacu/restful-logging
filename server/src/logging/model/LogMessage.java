@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package addressbook.model;
+package logging.model;
 
 import java.sql.Timestamp;
 
@@ -12,12 +12,19 @@ import java.sql.Timestamp;
  * @author Alexandru Cazacu
  */
 public class LogMessage {
+
     private Timestamp timestamp;
     private String appid;
     private String message;
 
     public LogMessage(Timestamp timestamp, String appid, String message, String level) {
         this.timestamp = timestamp;
+        this.appid = appid;
+        this.message = message;
+        this.level = level;
+    }
+
+    public LogMessage(String appid, String message, String level) {
         this.appid = appid;
         this.message = message;
         this.level = level;

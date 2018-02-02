@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-import addressbook.model.DatabaseManager;
-import addressbook.model.LogMessage;
-import addressbook.model.LogMessageDB;
+import logging.model.DatabaseManager;
+import logging.model.LogMessage;
+import logging.model.LogMessageDB;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;

@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package addressbook.controller;
+package logging.controller;
 
-import addressbook.model.LogMessage;
+import logging.model.DatabaseManager;
+import logging.model.LogMessage;
 import java.io.IOException;
 import java.net.URI;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import logging.client.LoggerSender;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -39,8 +41,10 @@ public class LogMessageWebService {
             System.out.println(String.format("Application started.\nTry out %s%s\nStop the application using CTRL+C",
                     BASE_URI, ROOT_PATH));
             Thread.currentThread().join();
-        } catch (IOException | InterruptedException ex) {
-            Logger.getLogger(LogMessageWebService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (IOException | InterruptedException ex) {
+            LoggerSender.getInstance().severe(ex.getMessage());
+            System.exit(1);
         }
     }
 
@@ -51,6 +55,8 @@ public class LogMessageWebService {
         ConsoleHandler ch = new ConsoleHandler();
         ch.setLevel(Level.ALL);
         l.addHandler(ch);
+
+        LoggerSender.getInstance().log(Level.INFO, "App started successfully!");
     }
 
     private void initServer() {
