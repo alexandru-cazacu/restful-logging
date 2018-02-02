@@ -6,11 +6,27 @@
 package logging.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Alex
  */
 public class Settings {
-    public ArrayList<String> loggableLevels;   
+
+    private static Settings instance;
+    public ArrayList<String> loggableLevels;
+    public int newRequestIntervalInSeconds;
+
+    private Settings() {
+        loggableLevels = new ArrayList<>();
+        newRequestIntervalInSeconds = 10;
+    }
+
+    public static Settings getInstance() {
+        if (instance == null) {
+            instance = new Settings();
+        }
+        return instance;
+    }
 }

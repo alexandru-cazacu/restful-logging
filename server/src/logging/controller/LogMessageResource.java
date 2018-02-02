@@ -12,25 +12,42 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import logging.client.LoggerSender;
 import logging.model.Settings;
 
 /**
  *
  * @author Alexandru Cazacu
  */
+@Path("logmessages")
 public class LogMessageResource {
 
     @GET
     @Path("settings")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getLogMessagesToLog() {
-        Settings settings = new Settings();
-        return null;
+        
+        Settings.getInstance().loggableLevels.add("SEVERE");
+        Settings.getInstance().loggableLevels.add("WARNING");
+
+        Gson gson = new Gson();
+
+        String res = gson.toJson(Settings.getInstance());
+        
+        LoggerSender.getInstance().info(res);
+
+        return Response
+                .ok(res)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Credentials", "true")
+                .header("Access-Control-Allow-Headers",
+                        "origin, content-type, accept, authorization")
+                .header("Access-Control-Allow-Methods",
+                        "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+                .build();
     }
-    
-    
+
     @GET
-    @Path("logmessages")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getLogMessages(
             @DefaultValue("NONE") @QueryParam("appId") String appId,
@@ -56,7 +73,6 @@ public class LogMessageResource {
     }
 
     @POST
-    @Path("logmessages")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addLogMessage(String message) {
