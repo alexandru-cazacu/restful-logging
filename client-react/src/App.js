@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import Form from "./form";
 import "./proto.css";
 
 class App extends Component {
@@ -8,10 +9,18 @@ class App extends Component {
     super(props);
 
     this.state = {table: []};
+
+    this.updateTable.bind(this);
   }
 
-  componentDidMount() {
-    axios.get("http://localhost:8888/api/logmessages", {
+  updateTable(level) {
+
+    let api = "http://localhost:8888/api/logmessages";
+    if (level !== "ALL") {
+      api += "?level=" + level;
+    }
+
+    axios.get(api, {
       crossdomain: true
     })
     .then((response) => {
@@ -45,12 +54,22 @@ class App extends Component {
     })
   }
 
+  componentDidMount() {
+    this.updateTable("ALL");
+  }
+
+  handleSearch(e) {
+    this.updateTable(e)
+  }
+
   render() {
     return (
       <div className="wrapper">
       <div className="space"></div>
       <h1><center>RESTful Logger</center></h1>
       <div className="space"></div>
+        <Form handleSearch={this.handleSearch.bind(this)} />
+        <div className="space"></div>
         <table className="proto-table striped filled center v-border">
           <tbody>
             <tr>
