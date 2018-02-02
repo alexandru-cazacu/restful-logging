@@ -32,7 +32,8 @@ public class DatabaseManager implements LogMessageDB {
             Class.forName("com.mysql.jdbc.Driver");
         }
         catch (ClassNotFoundException ex) {
-            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+            System.exit(1);
         }
     }
 
@@ -49,7 +50,7 @@ public class DatabaseManager implements LogMessageDB {
                 connection = DriverManager.getConnection("jdbc:mysql://localhost/logging", "root", "");
             }
             catch (SQLException ex) {
-                LoggerSender.getInstance().severe(ex.getMessage());
+                ex.printStackTrace();
                 System.exit(1);
             }
         }
@@ -85,7 +86,7 @@ public class DatabaseManager implements LogMessageDB {
             }
         }
         catch (SQLException ex) {
-            LoggerSender.getInstance().severe(ex.getMessage());
+            ex.printStackTrace();
             System.exit(1);
         }
         return logMessages;
@@ -108,7 +109,7 @@ public class DatabaseManager implements LogMessageDB {
             return rowCount;
         }
         catch (SQLException ex) {
-            LoggerSender.getInstance().severe(ex.getMessage());
+            ex.printStackTrace();
             System.exit(1);
         }
         return 0;

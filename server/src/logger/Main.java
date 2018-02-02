@@ -19,10 +19,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-
-        LoggerSender.setUp();
-        
+    public static void main(String[] args) {       
         LogMessageWebService webService = new LogMessageWebService();
         webService.start();
     }

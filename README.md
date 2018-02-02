@@ -12,7 +12,10 @@ RESTful logger made with MySQL and a bunch of libraries. Database is not impleme
 
 #### Description
 
-You can get all logs in a JSON format.
+Returns a JSON containin a list of logs. The list can be filtered using the following params:
+
+- appId
+- level
 
 #### API call
 
@@ -27,10 +30,10 @@ localhost:8080/api/logmessages?appId=super-awesome-app&level=SEVERE
 ```json
 [
     {
-        timestamp: "value",
-        cityId: "value",
-        message: "value",
-        level: "value"
+        "timestamp": "value",
+        "cityId": "value",
+        "message": "value",
+        "level": "value"
     },
     {
         ...
@@ -42,15 +45,11 @@ localhost:8080/api/logmessages?appId=super-awesome-app&level=SEVERE
 
 #### Description
 
-You can get settings of loggable levels and for the next request interval  in a JSON format.
+Get a JSON that contains a list of the logs that should be logged. It also contains a number that represents the interval in seconds that the client should wait before the next request.
 
 #### API call
 
-localhost:8080/api/logmessages/settings
-
-#### Example
-
-localhost:8080/api/logmessages/settings
+`localhost:8080/api/logmessages/settings`
 
 #### Body
 
@@ -68,13 +67,9 @@ localhost:8080/api/logmessages/settings
 
 #### Description
 
-You can send a new log.
+Sends a new Log to the server.
 
 #### API call
-
-localhost:8080/api/logmessages
-
-#### Example
 
 localhost:8080/api/logmessages
 
@@ -82,8 +77,8 @@ localhost:8080/api/logmessages
 
 ```json
 {
-    cityId: "value",
-    message: "value",
-    level: "value"
+    "cityId": "value",
+    "message": "value",
+    "level": "value"
 }
 ```

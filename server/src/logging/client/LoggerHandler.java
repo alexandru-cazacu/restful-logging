@@ -26,13 +26,11 @@ public class LoggerHandler extends Handler {
 
     @Override
     public void flush() {
-        LoggerSender.getInstance().severe("Unsupported method was called.");
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void close() throws SecurityException {
-        LoggerSender.getInstance().severe("Unsupported method was called.");
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
