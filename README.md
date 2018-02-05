@@ -85,6 +85,7 @@ Sends a new Log to the server.
 
 ## Client React Installation
 
+Install dependencies with:
 ```
 cd client-react
 npm install
@@ -93,7 +94,7 @@ npm install
 
 Run the project with:
 ```
-npm run
+npm start
 ```
 
 Build the project with:
