@@ -66,7 +66,7 @@ class App extends Component {
     return (
       <div className="wrapper">
       <div className="space"></div>
-      <h1><center>RESTful Logger</center></h1>
+      <h1><center>RESTful Logging</center></h1>
       <div className="space"></div>
         <Form handleSearch={this.handleSearch.bind(this)} />
         <div className="space"></div>
