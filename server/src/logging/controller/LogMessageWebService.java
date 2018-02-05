@@ -35,6 +35,9 @@ public class LogMessageWebService {
         initServer();
     }
 
+    /**
+     * Start the web service at http://localhost:8888/api.
+     */
     public void start() {
         try {
             server.start();
@@ -43,7 +46,7 @@ public class LogMessageWebService {
             Thread.currentThread().join();
         }
         catch (IOException | InterruptedException ex) {
-            LoggerSender.getInstance().severe(ex.getMessage());
+            ex.printStackTrace();
             System.exit(1);
         }
     }

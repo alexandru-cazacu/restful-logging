@@ -22,6 +22,10 @@ import logging.model.Settings;
 @Path("logmessages")
 public class LogMessageResource {
 
+    /**
+     * Get a Response containin a set of Settings.
+     * @return Response containing a set of Settings.
+     */
     @GET
     @Path("settings")
     @Produces(MediaType.APPLICATION_JSON)
@@ -47,6 +51,12 @@ public class LogMessageResource {
                 .build();
     }
 
+    /**
+     * Get a Response containing a list of LogMessages.
+     * @param appId appId
+     * @param level level
+     * @return LogMessages Response containing a list of LogMessages.
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getLogMessages(
@@ -72,6 +82,11 @@ public class LogMessageResource {
                 .build();
     }
 
+    /**
+     * Post a new LogMessage.
+     * @param message
+     * @return Response
+     */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
