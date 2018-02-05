@@ -63,7 +63,7 @@ Get a JSON that contains a list of the logs that should be logged. It also conta
 }
 ```
 
-## POST Lew log
+## POST New log
 
 #### Description
 
@@ -81,4 +81,22 @@ Sends a new Log to the server.
     "message": "value",
     "level": "value"
 }
+```
+
+## Client React Installation
+
+```
+cd client-react
+npm install
+
+```
+
+Run the project with:
+```
+npm run
+```
+
+Build the project with:
+```
+npm run build
 ```
