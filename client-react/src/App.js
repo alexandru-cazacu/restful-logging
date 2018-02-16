@@ -58,34 +58,30 @@ class App extends Component {
         this.updateTable("ALL");
     }
 
-    handleSearch(e) {
-        this.updateTable(e)
-    }
-
-    render() {
-        return (
-            <div className="wrapper">
-                <div className="space"></div>
-                <h1><center>RESTful Logger</center></h1>
-                <div className="space"></div>
-                <Form handleSearch={this.handleSearch.bind(this)} />
-                <div className="space"></div>
-                <table className="proto-table striped filled center v-border">
-                    <tbody>
-                        <tr>
-                            <th>Time</th>
-                            <th>APPID</th>
-                            <th>Message</th>
-                            <th>Level</th>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        {this.state.table}
-                    </tbody>
-                </table>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="wrapper">
+      <div className="space"></div>
+      <h1><center>RESTful Logging</center></h1>
+      <div className="space"></div>
+        <Form handleSearch={this.handleSearch.bind(this)} />
+        <div className="space"></div>
+        <table className="proto-table striped filled center v-border">
+          <tbody>
+            <tr>
+              <th>Time</th>
+              <th>APPID</th>
+              <th>Message</th>
+              <th>Level</th>
+            </tr>
+          </tbody>
+          <tbody>
+            {this.state.table}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -37,6 +37,10 @@ public class DatabaseManager implements LogMessageDB {
         }
     }
 
+    /**
+     * Returns a static instance of DatabaseManager.
+     * @return static instance of DatabaseManager.
+     */
     public static LogMessageDB getInstance() {
         if (instance == null) {
             instance = new DatabaseManager();
@@ -44,6 +48,9 @@ public class DatabaseManager implements LogMessageDB {
         return instance;
     }
 
+    /**
+     * Checks if a Connection exists, if it doesn't it creates one.
+     */
     private void checkConnection() {
         if (connection == null) {
             try {
@@ -113,5 +120,10 @@ public class DatabaseManager implements LogMessageDB {
             System.exit(1);
         }
         return 0;
+    }
+
+    @Override
+    public Settings getSettings() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -19,12 +19,20 @@ public class LoggerSender {
         
     }
     
+    /**
+     * Returns a static instance of a LoggerSender.
+     * @return static instace of LoggerSender.
+     */
     public static Logger getInstance() {
         if (logger == null)
             logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
         return logger;
     }
 
+    
+    /**
+     * Sets up a LoggerHandler using a SimpleFormatter.
+     */
     public static void setUp() {
         Handler handler = new LoggerHandler();
         handler.setFormatter(new SimpleFormatter());

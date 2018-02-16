@@ -20,14 +20,7 @@ class Form extends React.Component {
     render() {
         return (
             <div className="card">
-                <input value={this.state.filter} type="text" name="appId" id="appId" placeholder="App ID..." onChange={this.handleChange.bind(this)} />
-                <select name="level" id="level">
-                    <option value="All">All</option>
-                    <option value="INFO">INFO</option>
-                    <option value="SEVERE">SEVERE</option>
-                    <option value="FINE">FINE</option>
-                    <option value="FINER">FINER</option>
-                </select>
+                <input value={this.state.filter} type="text" name="appId" id="appId" placeholder="Log Level..." onChange={this.handleChange.bind(this)} />
                 <button className="bg-primary-blue primary-white" onClick={this.handleSearch.bind(this)}>Filter</button>
             </div>
         );

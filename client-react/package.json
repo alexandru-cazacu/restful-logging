@@ -1,7 +1,7 @@
 {
   "name": "restful-logger-client",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "./",
   "dependencies": {
     "axios": "^0.17.1",
     "react": "^16.2.0",
